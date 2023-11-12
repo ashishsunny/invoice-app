@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" className={`${league_spartan.variable} font-sans`}>
       <body>
         <LayoutMain>     
-        <div>{children}</div>
+          {children}
         </LayoutMain>
       </body>
     </html>
