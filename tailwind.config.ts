@@ -13,7 +13,7 @@ module.exports = {
         steelblue: "#7e88c3",
         color3: "#1e2139",
         darkorange: "#ff8f00",
-        mediumseagreen: "#33d69f",
+        success: "#33d69f",
         color4: "#7c5dfa",
       },
       spacing: {},
