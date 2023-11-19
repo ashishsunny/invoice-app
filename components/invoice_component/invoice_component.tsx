@@ -10,17 +10,31 @@ interface MyComponentProps {
     status?: string;
 }
 
-const statusLogic = (x: any) =>{
+const bgLogic = (x: any) =>{
     const str = x.toLowerCase();
-    console.log(str)
+
     if(str === 'paid'){
-        return("success")
+        return("bg-success")
     }
     else if(str === 'draft'){
-        return("color2")
+        return("bg-color2")
     }
     else{
-        return("darkorange")
+        return("bg-darkorange")
+    }
+}
+
+const textLogic = (x: any) =>{
+    const str = x.toLowerCase();
+
+    if(str === 'paid'){
+        return("text-success")
+    }
+    else if(str === 'draft'){
+        return("text-color2")
+    }
+    else{
+        return("text-darkorange")
     }
 }
 
@@ -38,14 +52,13 @@ const InvoiceComponent: React.FC<MyComponentProps> = ({ classN, rNo, date, price
 
         <div>
             <p>{name}</p>
-            <div className={`${'bg-'+statusLogic(status)} mt-[1.5rem] bg-opacity-[0.05] flex rounded-[.375rem]`}>
+            <div className={`${bgLogic(status)} mt-[1.5rem] bg-opacity-[0.05] flex rounded-[.375rem]`}>
                 <div className='flex items-center justify-center w-[6.2rem] h-[2.5rem] px-[1rem] py-[.8rem]'>
 
                 <div className='flex items-center pr-[.5rem]'>
-                    <div className={`${'bg-'+statusLogic(status)} w-[.5rem] h-[.5rem] rounded-[50%]`}></div>
+                    <div className={`${bgLogic(status)} w-[.5rem] h-[.5rem] rounded-[50%]`}></div>
                 </div>
-                <div className={`${'text-'+statusLogic(status)} font-bold`}>{status}</div>
-
+                <div className={`${textLogic(status)} font-bold`}>{status}</div>
                 </div>
             </div>
         </div>
