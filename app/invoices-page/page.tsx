@@ -13,7 +13,7 @@ const getInvoice = async () => {
   }
 }
 
-type dataType = {
+interface Invoice {
   id: number;
   rNo: string;
   date: string;
@@ -22,24 +22,29 @@ type dataType = {
   status: string;
 }
 
-const InvoicesPage: React.FC = async () => {
-  const data: dataType[] = await getInvoice();
+interface InvoiceData {
+  length: number;
+  inv: Invoice[];
+}
 
+const InvoicesPage: React.FC = async () => {
+  const data: InvoiceData[] = await getInvoice();
+  const [{inv, length}] = data;
 
   return (
     <div className="h-[100%] w-[100%] bg-color1 pb-[6rem]">
       <FilterBar />
       {
-        data.map(item => {
+        inv.map(invoice => {
           const props = {
-            rNo: item.rNo,
-            data: item.date,
-            price: item.price,
-            name: item.name,
-            status: item.status
+            rNo: invoice.rNo,
+            data: invoice.date,
+            price: invoice.price,
+            name: invoice.name,
+            status: invoice.status
           }
           return (
-            <InvoiceComponent classN="mb-[1rem]" key={item.id} {...props} />
+            <InvoiceComponent classN="mb-[1rem]" key={invoice.id} {...props} />
           )
         })
       }

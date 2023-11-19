@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 
 
@@ -39,13 +38,13 @@ const InvoiceComponent: React.FC<MyComponentProps> = ({ classN, rNo, date, price
 
         <div>
             <p>{name}</p>
-            <div className={` bg-${statusLogic(status)} mt-[1.5rem] bg-opacity-[0.05] flex rounded-[.375rem]`}>
+            <div className={`${'bg-'+statusLogic(status)} mt-[1.5rem] bg-opacity-[0.05] flex rounded-[.375rem]`}>
                 <div className='flex items-center justify-center w-[6.2rem] h-[2.5rem] px-[1rem] py-[.8rem]'>
 
                 <div className='flex items-center pr-[.5rem]'>
-                    <div className={`w-[.5rem] h-[.5rem] bg-${statusLogic(status)} rounded-[50%]`}></div>
+                    <div className={`${'bg-'+statusLogic(status)} w-[.5rem] h-[.5rem] rounded-[50%]`}></div>
                 </div>
-                <div className={`text-${statusLogic(status)} font-bold`}>{status}</div>
+                <div className={`${'text-'+statusLogic(status)} font-bold`}>{status}</div>
 
                 </div>
             </div>
