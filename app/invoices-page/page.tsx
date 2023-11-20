@@ -1,19 +1,10 @@
 'use client'
-import FilterBar from "@/components/filter_bar/filter_bar"
-import InvoiceComponent from "@/components/invoice_component/invoice_component"
-import axios from "axios"
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import FilterBar from '@/components/filter_bar/filter_bar';
+import InvoiceComponent from '@/components/invoice_component/invoice_component';
 
-const getInvoice = async () => {
-  try {
-    const response = await axios.get('http://localhost:3001/api/data');
-    return response.data
-  }
-  catch (error) {
-    console.error(error);
-  }
-}
-
-interface Invoice {
+interface InvoiceType {
   id: number;
   rNo: string;
   date: string;
@@ -22,34 +13,61 @@ interface Invoice {
   status: string;
 }
 
-interface InvoiceData {
+interface InvoiceDataType {
   length: number;
-  inv: Invoice[];
+  inv: InvoiceType[];
 }
 
-const InvoicesPage: React.FC = async () => {
-  const data: InvoiceData[] = await getInvoice();
-  const [{inv, length}] = data;
+const getInvoice = async (): Promise<InvoiceDataType[]> => {
+  try {
+    const response = await axios.get('http://localhost:3001/api/data');
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
 
-  return (
-    <div className="h-[100%] w-[100%] bg-color1 pb-[6rem]">
-      <FilterBar />
-      {
-        inv.map(invoice => {
-          const props = {
-            rNo: invoice.rNo,
-            data: invoice.date,
-            price: invoice.price,
-            name: invoice.name,
-            status: invoice.status
-          }
-          return (
-            <InvoiceComponent classN="mb-[1rem]" key={invoice.id} {...props} />
-          )
-        })
+const InvoicesPage: React.FC = () => {
+  const [invoicesData, setInvoicesData] = useState<InvoiceDataType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getInvoice();
+        setInvoicesData(data);
+      } finally {
+        setIsLoading(false);
       }
-    </div>
-  )
-}
+    };
 
-export default InvoicesPage
+    fetchData();
+  }, []);
+  const [{inv, length}] = invoicesData;
+  return (
+    <div className="h-full w-full bg-color1 pb-[6rem]">
+      <FilterBar />
+      {isLoading ? (
+        // Loader component or message while loading
+        <div>Loading...</div>
+      ) : (
+          <React.Fragment>
+            {inv.map((i) => (
+              <InvoiceComponent
+                classN="mb-[1rem]"
+                key={i.id}
+                rNo={i.rNo}
+                date={i.date}
+                price={i.price}
+                name={i.name}
+                status={i.status}
+              />
+            ))}
+          </React.Fragment>
+      )}
+    </div>
+  );
+};
+
+export default InvoicesPage;
