@@ -4,19 +4,31 @@ import axios from 'axios';
 import FilterBar from '@/components/filter_bar/filter_bar';
 import InvoiceComponent from '@/components/invoice_component/invoice_component';
 
-interface InvoiceType {
+
+type InvoiceType = {
   id: number;
   rNo: string;
-  date: string;
+  title: string;
+  invoiceDate: string;
+  dueDate: string;
+  recipientName: string;
+  recipientAddress: string;
+  email: string;
   price: string;
   name: string;
   status: string;
-}
+  address: string;
+  breakdown: {
+    item: string;
+    price: number;
+    itemCount: string;
+  }[];
+};
 
-interface InvoiceDataType {
+type InvoiceDataType = {
   length: number;
   inv: InvoiceType[];
-}
+};
 
 const getInvoice = async (): Promise<InvoiceDataType[]> => {
   try {
