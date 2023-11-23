@@ -15,6 +15,7 @@ module.exports = {
         darkorange: "#ff8f00",
         success: "#33d69f",
         color4: "#7c5dfa",
+        darkblue:"#252945"
       },
       spacing: {},
       fontFamily: {

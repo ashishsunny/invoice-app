@@ -84,7 +84,7 @@ const InvoicesPage: React.FC = () => {
                   classN="mb-[1rem]"
                   key={invoice.id}
                   rNo={invoice.rNo}
-                  date={invoice.date}
+                  date={invoice.dueDate}
                   price={invoice.price}
                   name={invoice.name}
                   status={invoice.status}
