@@ -16,7 +16,7 @@ const InvoiceDetails: React.FC = () => {
     )
   }
   return (
-    <div className="h-full w-full bg-color1 pb-[6rem]">
+    <div className="h-full w-full bg-color1 ">
       <BackButton />
 
       <div className='mt-[1.9rem] rounded-[0.5rem] mx-[1.5rem] h-[5.6rem] bg-color3 text-white'>
@@ -73,33 +73,39 @@ const InvoiceDetails: React.FC = () => {
               </div>
               
               <div>
-                    <div className="mt-[1.9rem] rounded-[0.5rem] h-[14rem] bg-darkblue text-white">
-                        <div className='p-[1.56rem]'>
-                            <div className='flex pl-[1.5rem] py-[1.5rem] justify-between'>
+                    <div className="mt-[1.9rem] rounded-[0.5rem] h-[14rem] bg-verydarkblue text-white">
+                        <div className='px-[1.56rem] h-[9rem] rounded-t-[0.5rem] bg-darkblue'>
+                            <div className='flex pl-[1.5rem] pt-[2rem] pb-[1.5rem] justify-between'>
                                 <div className='flex flex-col'>
-                                      <p>Banner Design</p>
-                                      <p>1 x $156.00</p>
+                                      <p className='font-bold text-[.94rem]'>Banner Design</p>
+                                      <p className='text-dimblue font-bold text-[.94rem] pt-[.5rem]'>1 x $156.00</p>
                                 </div>
-                                <div className='flex items-center'><p>$156.00</p></div>
+                                <div className='flex font-bold items-center text-[.94rem]'><p>$156.00</p></div>
                             </div>  
                             <div className='flex pl-[1.5rem] justify-between'>
                                 <div>
-                                      <p>Banner Design</p>
-                                      <p>1 x $156.00</p>
+                                      <p className=' font-bold text-[.94rem]'>Banner Design</p>
+                                      <p className='text-dimblue font-bold text-[.94rem] pt-[.5rem]'>1 x $156.00</p>
                                 </div>
-                                <div className='flex items-center'><p>$156.00</p></div>
+                                <div className='flex font-bold items-center text-[.94rem]'><p>$156.00</p></div>
                             </div>  
                         </div>
-
-                        <div>
-
+                        <div className='h-[5rem] flex items-center justify-between'>
+                            <div className='pl-[1.5rem] text-[.8rem] flex items-center justify-between'><p>Amount Due</p></div>
+                            <div className='pr-[1.5rem] font-bold text-[1.3rem] flex items-center justify-between'><p>£ 556.00</p></div>
                         </div>
                     </div>
               </div>     
               
           </div>
       </div>
-
+      <div className='w-[100%] h-[5rem] bg-color3'>
+          <div className='flex justify-between px-[1.5rem] pt-[1rem]'>
+            <button className='w-[4.5rem] text-[0.94rem] border-none h-[3rem] font-bold bg-darkblue rounded-[1.5rem] text-color2'>Edit</button>
+            <button className='w-[5.5rem] text-[0.94rem] border-none h-[3rem] font-bold bg-rose rounded-[1.5rem] text-white'>Delete</button>
+            <button className='w-[9.3rem] text-[0.94rem] border-none h-[3rem] font-bold bg-color4 rounded-[1.5rem] text-white'>Mark as Paid</button>
+          </div>
+      </div>
     </div>
   );
 };

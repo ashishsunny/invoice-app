@@ -10,12 +10,15 @@ module.exports = {
         color1: "#141625",
         color2: "#dfe3fa",
         white: "#fff",
+        dimblue:"#888EB0",
         steelblue: "#7e88c3",
         color3: "#1e2139",
         darkorange: "#ff8f00",
         success: "#33d69f",
         color4: "#7c5dfa",
-        darkblue:"#252945"
+        darkblue:"#252945",
+        verydarkblue:"#0C0E16",
+        rose:"#EC5757"
       },
       spacing: {},
       fontFamily: {
