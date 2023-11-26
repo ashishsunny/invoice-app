@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import FilterBar from '@/components/filter_bar/filter_bar';
@@ -80,15 +81,16 @@ const InvoicesPage: React.FC = () => {
           ) : (
             <React.Fragment>
               {invoicesData.map((invoice) => (
+                <Link style={{ textDecoration: 'none'}} key={invoice.id} href={`/invoices/${invoice.id}`}>
                 <InvoiceComponent
                   classN="mb-[1rem]"
-                  key={invoice.id}
                   rNo={invoice.rNo}
                   date={invoice.dueDate}
                   price={invoice.price}
                   name={invoice.name}
                   status={invoice.status}
                 />
+                </Link>
               ))}
             </React.Fragment>
           )}
