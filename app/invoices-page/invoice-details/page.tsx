@@ -110,7 +110,7 @@ const InvoiceDetails: React.FC = () => {
                 <p className='font-bold text-[.9rem] mt-[.8rem]'>21 August 2021</p>
               </div>
               <div className='mt-[1.9rem]'>
-                <p className='text-[.8rem]'>Payment Du</p>
+                <p className='text-[.8rem]'>Payment Due</p>
                 <p className='font-bold text-[.9rem] mt-[.8rem]'>20 Sept 2021</p>
               </div>
               <div className='mt-[2.2rem]'>
