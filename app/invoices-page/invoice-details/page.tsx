@@ -1,10 +1,9 @@
 'use client'
-
+import { useRouter } from 'next/router';
 import React from 'react';
 import BackButton from '@/components/back_button/back_button';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 
 type InvoiceType = {
   id: number;
@@ -42,10 +41,9 @@ const getInvoice = async (): Promise<InvoiceDataType[]> => {
 };
 
 const InvoiceDetails: React.FC = () => {
+  const router = useRouter();
   const [invoicesData, setInvoicesData] = useState<InvoiceType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
-  const { id : number } = router.query;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,15 +51,16 @@ const InvoiceDetails: React.FC = () => {
         const data = await getInvoice();
         const [{ inv, length }] = data;
         setInvoicesData(inv);
+        const { idNo : number } = router.query;
       } finally {
-        setIsLoading(false);
+        setIsLoading(false); 
       }
     };
 
     fetchData();
-  }, []);
-
-  const invoice = invoicesData.find((i) => i.id === id);
+  }, [router.query]);
+  
+  // const invoice = invoicesData.find((i) => i.id === id_no);
 
   const address = (x: string) => {
     const arr = x.split(',');
@@ -111,7 +110,7 @@ const InvoiceDetails: React.FC = () => {
                 <p className='font-bold text-[.9rem] mt-[.8rem]'>21 August 2021</p>
               </div>
               <div className='mt-[1.9rem]'>
-                <p className='text-[.8rem]'>Payment Due</p>
+                <p className='text-[.8rem]'>Payment Du</p>
                 <p className='font-bold text-[.9rem] mt-[.8rem]'>20 Sept 2021</p>
               </div>
               <div className='mt-[2.2rem]'>
