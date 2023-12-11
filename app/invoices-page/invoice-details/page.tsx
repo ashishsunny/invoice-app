@@ -1,5 +1,5 @@
 'use client'
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import React from 'react';
 import BackButton from '@/components/back_button/back_button';
 import { useState, useEffect } from 'react';
@@ -41,24 +41,24 @@ const getInvoice = async (): Promise<InvoiceDataType[]> => {
 };
 
 const InvoiceDetails: React.FC = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [invoicesData, setInvoicesData] = useState<InvoiceType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getInvoice();
-        const [{ inv, length }] = data;
-        setInvoicesData(inv);
-        const { idNo : number } = router.query;
-      } finally {
-        setIsLoading(false); 
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const data = await getInvoice();
+  //       const [{ inv, length }] = data;
+  //       setInvoicesData(inv);
+  //       const { idNo : number } = router.query;
+  //     } finally {
+  //       setIsLoading(false); 
+  //     }
+  //   };
 
-    fetchData();
-  }, [router.query]);
+  //   fetchData();
+  // }, [router.query]);
   
   // const invoice = invoicesData.find((i) => i.id === id_no);
 
