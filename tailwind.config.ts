@@ -18,7 +18,8 @@ module.exports = {
         color4: "#7c5dfa",
         darkblue:"#252945",
         verydarkblue:"#0C0E16",
-        rose:"#EC5757"
+        rose:"#EC5757",
+        text_grey:"#777F98"
       },
       spacing: {},
       fontFamily: {
